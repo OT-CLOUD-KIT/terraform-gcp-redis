@@ -1,14 +1,20 @@
 # Basic standalone redis with full configuration example
 ```
+provider "google" {
+  credentials = file("<service_account_key_json/p12_file")
+  project     = "<project-id>"
+  region      = "us-east1"
+}
+
 module "redis" {
-  source      = "../../"
-  vpc_network = "squadup-vpc"
-  primary_zone_id = "us-east1-b"
-  use_private_g_services = true
-  redis_version = "REDIS_6_X"
-  auth_enabled = true
+  source                  = "OT-CLOUD-KIT/redis/gcp"
+  vpc_network             = "squadup-vpc"
+  primary_zone_id         = "us-east1-b"
+  use_private_g_services  = true
+  redis_version           = "REDIS_6_X"
+  auth_enabled            = true
   transit_encryption_mode = "SERVER_AUTHENTICATION"
-  
+
   ############ configure redis tuning parameters ################
   redis_config_parameters = {
     activedefrag = "yes"

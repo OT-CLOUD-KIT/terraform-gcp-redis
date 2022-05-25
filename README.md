@@ -32,7 +32,7 @@ provider "google" {
 
 #Example BASIC tier redis cluster.
 module "redis" {
-  source      = "../"
+  source      = "OT-CLOUD-KIT/redis/gcp"
   vpc_network = "squadup-vpc"
   primary_zone_id = "us-east1-b"
   auth_enabled = true
@@ -40,7 +40,7 @@ module "redis" {
 
 # Example STANDARD_HA tier redis cluster for high availability
 module "redis" {
-  source      = "../"
+  source      = "OT-CLOUD-KIT/redis/gcp"
   vpc_network = "squadup-vpc"
   primary_zone_id = "us-east1-b"
   auth_enabled = true

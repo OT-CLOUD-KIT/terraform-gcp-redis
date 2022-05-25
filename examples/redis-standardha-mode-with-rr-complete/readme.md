@@ -1,27 +1,33 @@
 # Standard-HA redis with full configuration example
 ```
+provider "google" {
+  credentials = file("<service_account_key_json/p12_file")
+  project     = "<project-id>"
+  region      = "us-east1"
+}
+
 module "redis" {
-  source      = "../../"
-  vpc_network = "squadup-vpc"
-  primary_zone_id = "us-east1-b"
-  use_private_g_services = true
-  redis_version = "REDIS_6_X"
-  memory_size_gb = 10
-  auth_enabled = true
+  source                  = "OT-CLOUD-KIT/redis/gcp"
+  vpc_network             = "squadup-vpc"
+  primary_zone_id         = "us-east1-b"
+  use_private_g_services  = true
+  redis_version           = "REDIS_6_X"
+  memory_size_gb          = 10
+  auth_enabled            = true
   transit_encryption_mode = "SERVER_AUTHENTICATION"
-  service_tier  = "STANDARD_HA"
-  read_replicas_mode = "READ_REPLICAS_ENABLED"
-  replica_count = 3
-############ define user labels ###############
-user_labels = {
-    managedby = "Terraform"
-    env= "dev"
-}  
-############ configure redis tuning parameters ################
+  service_tier            = "STANDARD_HA"
+  read_replicas_mode      = "READ_REPLICAS_ENABLED"
+  replica_count           = 3
+  ############ define user labels ###############
+  user_labels = {
+    managedby = "terraform"
+    env       = "dev"
+  }
+  ############ configure redis tuning parameters ################
   redis_config_parameters = {
     activedefrag = "yes"
   }
-############ configure maintainence window ################
+  ############ configure maintainence window ################
   maintenance_policy = {
     description = "Maintainence on Saturday"
     weekly_maintenance_window = {
