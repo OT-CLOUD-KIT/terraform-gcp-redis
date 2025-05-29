@@ -11,7 +11,7 @@ The Redis instance can be deployed in any supported GCP region and is intended f
 
 ## Architecture
 
-<img width="600" length="800" alt="Terraform" src="https://github.com/user-attachments/assets/d77a586d-ae1d-46e3-843e-b76d9c36b368">
+<img width="600" length="800" alt="Terraform" src="https://github.com/user-attachments/assets/90076a35-2f59-4f8b-95cd-da0b1e568966">
 
 ## Providers
 
