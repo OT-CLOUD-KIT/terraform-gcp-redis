@@ -1,0 +1,19 @@
+
+project = "your-gcp-project-id"
+name    = "redis-ha-cluster"
+region  = "us-central1"
+
+cluster_shard_count = 3
+
+cluster_network = "projects/your-gcp-project-id/global/networks/your-gke-vpc"
+
+cluster_psc_subnetworks = [
+  "projects/your-gcp-project-id/regions/us-central1/subnetworks/your-psc-subnet"
+]
+
+cluster_kms_key = null
+
+labels = {
+  env        = "dev"
+  managed_by = "terraform"
+}

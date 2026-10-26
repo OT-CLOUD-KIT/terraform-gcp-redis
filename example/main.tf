@@ -1,5 +1,8 @@
+
 module "gcp_redis" {
-  source = "./module"
+  source = "../"
+
+  deployment_mode = "instance"
 
   name               = var.name
   region             = var.region
@@ -11,10 +14,11 @@ module "gcp_redis" {
   connect_mode            = var.connect_mode
   transit_encryption_mode = var.transit_encryption_mode
   read_replicas_mode      = var.read_replicas_mode
-  labels                  = var.labels
-  project                 = var.project
 
-  persistence_config   = var.persistence_config
-  maintenance_policy   = var.maintenance_policy
-  timeouts             = var.timeouts
+  labels  = var.labels
+  project = var.project
+
+  persistence_config = var.persistence_config
+  maintenance_policy = var.maintenance_policy
+  timeouts           = var.timeouts
 }
